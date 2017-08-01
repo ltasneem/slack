@@ -161,9 +161,10 @@ public class User {
     {
     	this.active="true";
     	this.loggedin="false";
+    	this.role="USER";
     }
     
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String role, String gravatar,String active, String loggedin) {
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String role, String gravatar) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -171,8 +172,8 @@ public class User {
         this.username = username;
         this.role = role;
         this.gravatar=getGravatarURL(this.email,70);
-        this.active=active;
-        this.loggedin=loggedin;
+        this.active="true";
+        this.loggedin="false";
     }
     
     public  String getGravatarURL(String email, Integer size){
