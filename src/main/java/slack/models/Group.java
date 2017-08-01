@@ -13,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="groups", schema="slack")
 public class Group {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
