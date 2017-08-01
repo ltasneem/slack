@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import slack.models.Group;
+import slack.models.Message;
 import slack.models.User;
 import slack.repositories.GroupRepository;
 
@@ -18,12 +19,12 @@ public class GroupService {
 	Group findByName(String name) {
 		return groupRepository.findByName(name);
 	}
-	Group findByUser(User user) {
-		return groupRepository.findByUser(user);
-	}
+//	Group findByUser(User user) {
+//		return groupRepository.findByUser(user);
+//	}
 
 	//may need one for saving users
-   public void saveMessage(Message msg) {
+   public void saveGroup(Group group) {
 	   
 	   	//set message
 	   
@@ -32,7 +33,7 @@ public class GroupService {
 //        user.setRoles(Arrays.asList(roleRepository.findByRole("USER")));
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
 //        user.setEnabled(true);
-        msgRepository.save(msg);
+        groupRepository.save(group);
     }
 
 }

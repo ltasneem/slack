@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import slack.models.Group;
 import slack.models.Message;
 import slack.models.User;
 

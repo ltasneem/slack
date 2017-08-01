@@ -8,6 +8,6 @@ import slack.models.User;
 public interface GroupRepository extends CrudRepository<Group, Long> {
 	
 	Group findByName(String name);
-	Group findByUser(User user);
+	//Group findByUser(User user);
 
 }
