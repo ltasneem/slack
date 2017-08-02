@@ -38,33 +38,29 @@
 	</div>
 
 	<script>
-	
-// 		document.getElementById('userinput').onkeydown = function(e){
-// 			if(e.keyCode == 13){
-// 				var message = $("#userinput").value;
-// 				getMessage(message);
-// 				$("#userinput").value = "";
-			
-// 			}
-			   
-// 		};
 		
+		// User presses enter key, send message to Controller to add to database
 		$("#userinput").keydown(function(event){
 			if (event.which == 13){
 				var message = $("#userinput").val();
-				getMessage(message);
+				$.get('/addmessage',{message : message}, 
+						function(data){
+						}
+					);
 				$("#userinput").val("");
 			}
 		});
 		
-		function getMessage(message){
-			$.get('/getmessages',{message : message}, 
-				function(data){
-					$("#chatbox").html(data);
-					//console.log(data);
+		// Self executing function to poll server for latest messages
+		(function fetch(){
+			$.get('/getmessages',
+				function(messages){
+					//$("#chatbox").html(data);
+					
+					setTimeout(fetch,100);
 				}
 			);
-		}
+		})();
 	
 	</script>
 
