@@ -9,7 +9,7 @@ public class MessageController {
 	
 	@RequestMapping("/getmessages")
 	public String getMessages(@RequestParam("message") String msg){
-		return "big";
+		return msg;
 	}
 
 }
