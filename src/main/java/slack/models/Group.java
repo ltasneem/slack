@@ -26,24 +26,17 @@ public class Group {
 	private String name;
 	
 	@Column(name = "active")
-	private boolean active;
+	private String active;
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "groups")	
 	private List<User> users;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
 	@JoinTable(joinColumns = @JoinColumn(name = "group_id"),inverseJoinColumns = @JoinColumn(name = "message_id"))
-	private List<Message> messages;
-
-	public Group(long gid, String n, boolean act) {
-		this.name = n;
-		this.id = gid;
-		this.active =act;
-	}
-	
+	private List<Message> messages;	
 	
 	public Group() {
-		
+		active = "true";
 	}
 	
 	
@@ -63,11 +56,11 @@ public class Group {
 		this.name = name;
 	}
 
-	public boolean isActive() {
+	public String isActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(String active) {
 		this.active = active;
 	}
 
@@ -87,6 +80,8 @@ public class Group {
 		this.messages = messages;
 	}
 	
-	
+	public void addMessage(Message msg) {
+    	messages.add(msg);
+    }
 	
 }

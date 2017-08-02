@@ -182,6 +182,8 @@ public class User {
 		return url;
 	}
     
-   
+    public void addMessage(Message msg) {
+    	messages.add(msg);
+    }
 
 }
