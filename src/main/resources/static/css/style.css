@@ -1,0 +1,11 @@
+.topgap {
+	margin-top: 100px;
+}
+
+#sidebar{
+	border: solid black 1px;
+}
+
+#chatbox{
+	border: solid black 1px;
+}
