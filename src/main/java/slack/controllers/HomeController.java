@@ -1,6 +1,7 @@
 package slack.controllers;
 
 import java.io.UnsupportedEncodingException;
+
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -67,5 +68,13 @@ public class HomeController {
             model.addAttribute("message", "User Account Successfully Created");
         }
         return "registration";
+    }
+    
+    @RequestMapping("/userprofile")
+    public String userprofile(Principal principal,Model model){
+    	User user = userService.findByUsername(principal.getName());
+    	//System.out.println(user.getUsername());
+    	model.addAttribute("user", user);
+        return "userprofile";
     }
 }
