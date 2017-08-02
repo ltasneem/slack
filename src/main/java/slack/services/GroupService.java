@@ -9,12 +9,16 @@ import slack.models.Group;
 import slack.models.Message;
 import slack.models.User;
 import slack.repositories.GroupRepository;
+import slack.repositories.UserRepository;
 
 @Service
 public class GroupService {
 	
 	@Autowired
 	GroupRepository groupRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	Group findByName(String name) {
 		return groupRepository.findByName(name);

@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import slack.models.Group;
 import slack.models.User;
+import slack.services.GroupService;
 import slack.services.UserService;
 import slack.validators.UserValidator;
 
@@ -35,6 +37,9 @@ public class HomeController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private GroupService groupService;
 	
 	@RequestMapping("/")
 	   public String index(Model model){
@@ -50,6 +55,24 @@ public class HomeController {
     public String login(){
         return "login";
     }
+    
+    //go to new group page
+    @RequestMapping("/newgroup")
+    public String showNewGroup(Model model) {
+    	//get the database for users
+    	
+    	ArrayList<User> users = userService.findAll();
+    	model.addAttribute("userlist",users);
+    	
+    	model.addAttribute("group",new Group());
+    	return "newgroup";
+    }
+    
+    
+    //change to variable name for which page you are coming from and send the post to homepage instead
+    //do this for all form/new stuff
+    //create new group - post
+   
     
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public String showRegistrationPage(Model model){

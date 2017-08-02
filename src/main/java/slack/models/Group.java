@@ -46,6 +46,9 @@ public class Group {
 		
 	}
 	
+	public void addUser(User u) {
+		this.users.add(u);
+	}
 	
 	public long getId() {
 		return id;

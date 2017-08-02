@@ -1,5 +1,8 @@
 package slack.services;
 
+import java.util.ArrayList;
+
+import org.assertj.core.internal.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,20 @@ public class UserService {
     public User findByUsername(String username){
         return userRepository.findByUsername(username);
     }
+    
+    public ArrayList<User> findAll(){
+    	
+    	ArrayList<User> listofusers = new ArrayList<User>();
+    	
+    	Iterable<User> iter = userRepository.findAll();
+    	for(User u: iter) {
+    		listofusers.add(u);
+    	}
+    	
+    	return listofusers; 	
+    }
+    
+    
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive("true");
@@ -36,6 +53,9 @@ public class UserService {
         user.setActive("true");
         userRepository.save(user);
     }
+    
+    
+    
     public SSUserDetailsService createservice()  
     {
     	return new SSUserDetailsService(userRepository);
