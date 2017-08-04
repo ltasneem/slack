@@ -1,5 +1,6 @@
 package slack.services;
 
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,13 +29,24 @@ public class UserService {
     }
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+    	//System.out.println(user.getPassword());
+    	//StandardPBEStringEncryptor spbe= new StandardPBEStringEncryptor();
+        //spbe.setPassword(user.getPassword());
+        //user.setPassword(spbe.encrypt(user.getPassword()));
         user.setActive("true");
         userRepository.save(user);
     }
     public void saveAdmin(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+    	//StandardPBEStringEncryptor spbe= new StandardPBEStringEncryptor();
+       // spbe.setPassword(user.getPassword());
         user.setActive("true");
         userRepository.save(user);
+    }
+    
+    public boolean checkpassword(String raw_pass,String encrypted_pass)
+    {
+    	return passwordEncoder.matches(raw_pass,encrypted_pass);
     }
     public SSUserDetailsService createservice()  
     {

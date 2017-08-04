@@ -1,5 +1,6 @@
 package slack.configs;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,4 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
     }
+    
+
 }

@@ -87,6 +87,9 @@ public class Group {
 		this.messages = messages;
 	}
 	
-	
+	public void addMessage(Message msg) {
+    	messages.add(msg);
+    }
+
 	
 }

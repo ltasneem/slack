@@ -31,6 +31,7 @@ public class SSUserDetailsService implements UserDetailsService {
                 return null;
             }
             System.out.println(" user from username " + user.toString());
+            System.out.println(" user from username " + user.getPassword());
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
         } catch (Exception e){
             throw new UsernameNotFoundException("User not found");
