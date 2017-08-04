@@ -1,5 +1,6 @@
 package slack.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,6 +38,9 @@ public class Group {
 	
 	public Group() {
 		active = "true";
+		name = "ooga";
+		users = new ArrayList<User>();
+		messages = new ArrayList<Message>();
 	}
 	
 	

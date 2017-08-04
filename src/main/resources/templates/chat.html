@@ -53,10 +53,15 @@
 		
 		// Self executing function to poll server for latest messages
 		(function fetch(){
+			console.log("cat");
 			$.get('/getmessages',
 				function(messages){
 					//$("#chatbox").html(data);
-					
+					$.each(messages,
+						function(item,value){
+							console.log(value.content);
+						}
+					);
 					setTimeout(fetch,100);
 				}
 			);
